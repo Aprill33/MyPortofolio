@@ -1,27 +1,28 @@
 import { useState, useEffect, useContext } from "react";
 import { certificatesData } from "../Data/Data";
-import { HiX, HiZoomIn } from "react-icons/hi";
+import { HiX, HiZoomIn, HiBadgeCheck, HiCalendar } from "react-icons/hi";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeLangContext } from "../Context/ThemeLangContext";
 
 const Certificates = () => {
   const { lang } = useContext(ThemeLangContext);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedCert, setSelectedCert] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("Semua");
 
-  // Handle ESC key to close modal
+  // Keyboard accessibility
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === "Escape" && selectedImage) {
-        setSelectedImage(null);
+      if (e.key === "Escape" && selectedCert) {
+        setSelectedCert(null);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedImage]);
+  }, [selectedCert]);
 
-  // Prevent scrolling when modal is open
+  // Lock body scroll during modal view
   useEffect(() => {
-    if (selectedImage) {
+    if (selectedCert) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
@@ -29,7 +30,13 @@ const Certificates = () => {
     return () => {
       document.body.style.overflow = "unset";
     };
-  }, [selectedImage]);
+  }, [selectedCert]);
+
+  const categories = ["Semua", "Web & React", "Backend & .NET", "Database", "Tools & Git", "Fundamental"];
+
+  const filteredList = selectedCategory === "Semua"
+    ? certificatesData.list
+    : certificatesData.list.filter((c) => c.category === selectedCategory);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -40,107 +47,170 @@ const Certificates = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
+    hidden: { opacity: 0, scale: 0.94, y: 20 },
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { type: "spring", stiffness: 60, damping: 15 },
+      y: 0,
+      transition: { type: "spring", stiffness: 60, damping: 14 },
     },
   };
 
   return (
-    <section className="py-24 px-6 lg:px-12 bg-card-white dark:bg-dark-card min-h-[calc(100vh-80px)] border-t-4 border-neo-black dark:border-white transition-colors duration-300">
+    <section className="py-16 px-6 lg:px-12 relative min-h-[calc(100vh-120px)]">
       <div className="max-w-7xl mx-auto">
+        {/* Header */}
         <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="inline-block text-3xl md:text-4xl font-semibold text-neo-black dark:text-dark-text uppercase mb-6 relative">
-            <span className="relative z-10 transition-colors duration-300 hover:text-dusty-rose cursor-default">
-              {certificatesData.title[lang]}
-            </span>
-            <div className="absolute bottom-1 left-0 w-full h-4 bg-peach -z-10" />
-          </h2>
-          <p className="mt-4 text-neo-black dark:text-dark-text font-medium text-base md:text-lg max-w-2xl mx-auto bg-cream dark:bg-dark-bg border-2 border-neo-black dark:border-white p-4 shadow-[4px_4px_0_#221C1B] dark:shadow-[4px_4px_0_#FBB5B1]">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-peach/40 dark:bg-dusty-rose/20 text-dusty-rose text-xs font-semibold uppercase tracking-wider mb-3">
+            <HiBadgeCheck className="text-sm" />
+            {lang === "id" ? "Sertifikasi Formal" : "Official Certifications"}
+          </div>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neo-black dark:text-dark-text mb-4">
+            {certificatesData.title[lang]}
+          </h1>
+          <p className="text-neo-black/70 dark:text-dark-text/70 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
             {certificatesData.subtitle[lang]}
           </p>
         </motion.div>
 
+        {/* Category Filter Pills */}
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all cursor-pointer ${
+                selectedCategory === cat
+                  ? "bg-gradient-to-r from-dusty-rose to-rose-accent text-white shadow-md scale-105"
+                  : "bg-white/70 dark:bg-dark-card/70 text-neo-black/70 dark:text-dark-text/70 border border-peach/40 dark:border-white/10 hover:border-dusty-rose hover:text-neo-black"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* Certificates Grid */}
         <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          animate="visible"
+          key={selectedCategory}
         >
-          {certificatesData.list.map((cert, index) => (
+          {filteredList.map((cert, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              whileHover={{ y: -8, x: -8 }}
-              className="group cursor-pointer bg-cream dark:bg-dark-bg rounded-2xl overflow-hidden border-4 border-neo-black dark:border-white shadow-[6px_6px_0_#221C1B] dark:shadow-[6px_6px_0_#FBB5B1] transition-all duration-300"
-              onClick={() => setSelectedImage(cert.image)}
+              whileHover={{ y: -6 }}
+              className="group cursor-pointer bg-white/70 dark:bg-dark-card/70 rounded-3xl overflow-hidden border border-peach/40 dark:border-white/10 soft-shadow backdrop-blur-md flex flex-col justify-between hover:border-dusty-rose/50 transition-all duration-300"
+              onClick={() => setSelectedCert(cert)}
             >
-              <div className="relative aspect-[4/3] overflow-hidden bg-card-white/50 border-b-4 border-neo-black dark:border-white p-4">
+              {/* Image Thumbnail Container */}
+              <div className="relative aspect-[4/3] overflow-hidden bg-cream dark:bg-dark-bg/50 p-4 border-b border-peach/30 dark:border-white/10 flex items-center justify-center">
                 <img
                   src={cert.image}
                   alt={cert.title}
-                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-xl"
                 />
-                {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-neo-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
-                  <div className="bg-peach text-neo-black p-4 rounded-full border-4 border-neo-black translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-[4px_4px_0_#221C1B]">
-                    <HiZoomIn className="text-3xl" />
+                
+                {/* Soft Hover Spotlight Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                  <div className="bg-white/90 text-neo-black px-4 py-2.5 rounded-full font-semibold text-xs flex items-center gap-2 shadow-lg transform translate-y-3 group-hover:translate-y-0 transition-transform">
+                    <HiZoomIn className="text-dusty-rose text-base" />
+                    Lihat Sertifikat
                   </div>
                 </div>
               </div>
-              <div className="p-6 bg-cream dark:bg-dark-bg">
-                <h3 className="font-semibold text-neo-black dark:text-dark-text text-base md:text-lg line-clamp-2 text-center group-hover:text-dusty-rose transition-colors uppercase">
-                  {cert.title}
-                </h3>
+
+              {/* Certificate Details */}
+              <div className="p-6 flex flex-col flex-grow justify-between">
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <span className="text-xs font-semibold px-3 py-1 rounded-full bg-peach/40 dark:bg-dusty-rose/20 text-dusty-rose">
+                      {cert.category}
+                    </span>
+                    <span className="text-xs font-medium text-neo-black/50 dark:text-dark-text/50 flex items-center gap-1">
+                      <HiCalendar className="text-dusty-rose" />
+                      {cert.period}
+                    </span>
+                  </div>
+
+                  <h3 className="font-bold text-neo-black dark:text-dark-text text-base md:text-lg group-hover:text-dusty-rose transition-colors leading-snug line-clamp-2">
+                    {cert.title}
+                  </h3>
+                </div>
+
+                <div className="mt-4 pt-3 border-t border-peach/30 dark:border-white/10 flex items-center justify-between text-xs text-neo-black/60 dark:text-dark-text/60">
+                  <span className="font-medium">{cert.issuer}</span>
+                  <span className="text-dusty-rose font-semibold group-hover:underline">Perbesar &rarr;</span>
+                </div>
               </div>
             </motion.div>
           ))}
         </motion.div>
       </div>
 
-      {/* Lightbox Modal with Framer Motion */}
+      {/* Lightbox Preview Modal */}
       <AnimatePresence>
-        {selectedImage && (
+        {selectedCert && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-neo-black/90 backdrop-blur-md p-4 sm:p-8"
-            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 backdrop-blur-md p-4 sm:p-8"
+            onClick={() => setSelectedCert(null)}
           >
+            {/* Close Button */}
             <motion.button
               whileHover={{ scale: 1.1, rotate: 90 }}
               whileTap={{ scale: 0.9 }}
-              onClick={() => setSelectedImage(null)}
-              className="absolute top-6 right-6 sm:top-10 sm:right-10 bg-dusty-rose text-neo-black border-4 border-neo-black hover:bg-peach transition-colors p-3 rounded-xl shadow-[4px_4px_0_#221C1B] focus:outline-none z-[110]"
+              onClick={() => setSelectedCert(null)}
+              className="absolute top-6 right-6 bg-white/20 text-white hover:bg-dusty-rose transition-colors p-3 rounded-full border border-white/30 backdrop-blur-md shadow-lg z-[110] cursor-pointer"
               aria-label="Close Modal"
             >
-              <HiX size={32} />
+              <HiX size={24} />
             </motion.button>
             
             <motion.div 
-              initial={{ opacity: 0, scale: 0.8, y: 50 }}
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.8, y: 50 }}
+              exit={{ opacity: 0, scale: 0.9, y: 30 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className="relative max-w-5xl w-full max-h-[90vh] flex items-center justify-center"
+              className="relative max-w-4xl w-full flex flex-col items-center"
               onClick={(e) => e.stopPropagation()} 
             >
-              <div className="bg-card-white border-8 border-neo-black p-2 shadow-[16px_16px_0_#FBB5B1] rounded-3xl">
+              <div className="bg-white dark:bg-dark-card border border-peach/50 dark:border-white/10 p-3 sm:p-4 shadow-2xl rounded-3xl w-full">
                 <img
-                  src={selectedImage}
-                  alt="Certificate Preview"
-                  className="max-w-full max-h-[85vh] object-contain rounded-xl border-4 border-neo-black"
+                  src={selectedCert.image}
+                  alt={selectedCert.title}
+                  className="w-full max-h-[78vh] object-contain rounded-2xl"
                 />
+                
+                <div className="mt-4 px-3 py-2 flex flex-wrap items-center justify-between gap-3 bg-cream/60 dark:bg-dark-bg/60 rounded-2xl border border-peach/30 dark:border-white/10">
+                  <div>
+                    <h3 className="font-bold text-neo-black dark:text-dark-text text-base md:text-lg">
+                      {selectedCert.title}
+                    </h3>
+                    <p className="text-xs text-neo-black/60 dark:text-dark-text/60">
+                      {selectedCert.issuer} — {selectedCert.period}
+                    </p>
+                  </div>
+                  <a
+                    href={selectedCert.image}
+                    download
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-4 py-2 rounded-xl bg-gradient-to-r from-dusty-rose to-rose-accent text-white font-semibold text-xs shadow-md hover:shadow-lg transition-all"
+                  >
+                    Buka Ukuran Penuh
+                  </a>
+                </div>
               </div>
             </motion.div>
           </motion.div>

@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { HiMenuAlt3, HiX, HiMoon, HiSun } from "react-icons/hi";
+import { FaGithub } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeLangContext } from "../Context/ThemeLangContext";
 
@@ -10,7 +11,6 @@ const Header = () => {
   const location = useLocation();
   const { theme, toggleTheme, lang, toggleLang } = useContext(ThemeLangContext);
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -28,36 +28,50 @@ const Header = () => {
 
   return (
     <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ type: "spring", stiffness: 100, damping: 20 }}
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-peach/90 dark:bg-dark-bg/90 backdrop-blur-md shadow-[0_4px_0_#221C1B] border-b-2 border-neo-black dark:border-white py-3"
-          : "bg-transparent py-6"
+          ? "py-3 soft-glass border-b border-peach/50 dark:border-white/10 soft-shadow"
+          : "py-5 bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
         {/* Logo */}
         <NavLink 
           to="/" 
-          className="text-2xl font-semibold tracking-tighter text-neo-black dark:text-dark-text relative group"
+          className="text-2xl font-bold tracking-tight text-neo-black dark:text-dark-text flex items-center gap-1.5 group"
         >
-          <span className="relative z-10">&lt;April<span className="text-card-white">/</span>&gt;</span>
+          <span className="w-9 h-9 rounded-xl bg-gradient-to-tr from-dusty-rose to-peach text-white flex items-center justify-center font-bold text-lg shadow-md group-hover:scale-105 transition-transform">
+            A
+          </span>
+          <span className="font-semibold text-lg tracking-tight">
+            Aprilliyanti<span className="text-dusty-rose">.</span>
+          </span>
         </NavLink>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-2 bg-card-white dark:bg-dark-card px-4 py-2 rounded-xl border-2 border-neo-black dark:border-white shadow-[4px_4px_0_#221C1B] dark:shadow-[4px_4px_0_#FBB5B1]">
+        <nav className="hidden md:flex items-center gap-1 bg-white/80 dark:bg-dark-card/80 p-1.5 rounded-full border border-peach/40 dark:border-white/10 soft-shadow backdrop-blur-md">
           {navLinks.map((link) => {
-            const isActive = location.pathname === link.path || (link.path === "/" && location.pathname === "") ;
+            const isActive = location.pathname === link.path || (link.path === "/" && location.pathname === "");
             return (
               <NavLink 
                 key={link.name} 
                 to={link.path} 
-                className={`relative px-4 py-1.5 text-sm font-medium transition-all duration-300 z-10 rounded-md border-2 border-transparent ${
-                  isActive ? "text-neo-black border-neo-black bg-peach" : "text-neo-black/70 dark:text-dark-text/70 hover:text-neo-black dark:hover:text-dark-text hover:bg-dusty-rose hover:border-neo-black"
+                className={`relative px-5 py-2 text-sm font-medium transition-all duration-300 rounded-full ${
+                  isActive 
+                    ? "text-white font-semibold" 
+                    : "text-neo-black/70 dark:text-dark-text/70 hover:text-neo-black dark:hover:text-dark-text hover:bg-peach/30 dark:hover:bg-white/5"
                 }`}
               >
+                {isActive && (
+                  <motion.div
+                    layoutId="activeNavBackground"
+                    className="absolute inset-0 bg-gradient-to-r from-dusty-rose to-rose-accent rounded-full -z-10 shadow-sm"
+                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                  />
+                )}
                 {link.name}
               </NavLink>
             );
@@ -65,48 +79,49 @@ const Header = () => {
         </nav>
 
         {/* Action Buttons Desktop */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-3">
           <button
             onClick={toggleLang}
-            className="px-3 py-2 font-medium text-sm bg-card-white dark:bg-dark-card border-2 border-neo-black dark:border-white rounded-lg shadow-[3px_3px_0_#221C1B] dark:shadow-[3px_3px_0_#FFF6EE] hover:translate-y-[2px] hover:shadow-[1px_1px_0_#221C1B] transition-all"
+            className="px-3.5 py-1.5 font-semibold text-xs uppercase tracking-wider bg-white/80 dark:bg-dark-card/80 border border-peach/50 dark:border-white/15 rounded-full text-neo-black dark:text-dark-text hover:border-dusty-rose hover:bg-peach/30 transition-all soft-shadow cursor-pointer"
           >
             {lang === "id" ? "ID" : "EN"}
           </button>
           
           <button
             onClick={toggleTheme}
-            className="p-2 font-medium bg-peach dark:bg-dusty-rose text-neo-black border-2 border-neo-black dark:border-white rounded-lg shadow-[3px_3px_0_#221C1B] hover:translate-y-[2px] hover:shadow-[1px_1px_0_#221C1B] transition-all"
+            className="p-2.5 bg-white/80 dark:bg-dark-card/80 text-neo-black dark:text-dark-text border border-peach/50 dark:border-white/15 rounded-full hover:bg-peach/30 dark:hover:bg-white/10 transition-all soft-shadow cursor-pointer"
             aria-label="Toggle Theme"
           >
-            {theme === "light" ? <HiMoon size={20} /> : <HiSun size={20} />}
+            {theme === "light" ? <HiMoon size={18} className="text-dusty-rose" /> : <HiSun size={18} className="text-peach" />}
           </button>
 
-           <motion.a
+          <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             href="https://github.com/Aprill33"
             target="_blank"
             rel="noreferrer"
-            className="px-6 py-2 rounded-xl bg-dusty-rose text-neo-black font-semibold border-2 border-neo-black dark:border-white shadow-[4px_4px_0_#221C1B] dark:shadow-[4px_4px_0_#FFF6EE] hover:bg-peach transition-colors"
+            className="flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-dusty-rose to-rose-accent text-white font-medium text-sm shadow-md hover:shadow-lg transition-all"
           >
+            <FaGithub className="text-base" />
             GitHub
           </motion.a>
         </div>
 
         {/* Mobile Toggle */}
-        <div className="flex md:hidden items-center gap-3">
+        <div className="flex md:hidden items-center gap-2">
           <button
             onClick={toggleTheme}
-            className="p-2 font-medium bg-peach text-neo-black border-2 border-neo-black rounded-lg shadow-[2px_2px_0_#221C1B]"
+            className="p-2 bg-white/80 dark:bg-dark-card/80 text-neo-black dark:text-dark-text border border-peach/50 dark:border-white/15 rounded-full"
           >
-            {theme === "light" ? <HiMoon size={18} /> : <HiSun size={18} />}
+            {theme === "light" ? <HiMoon size={18} className="text-dusty-rose" /> : <HiSun size={18} className="text-peach" />}
           </button>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-neo-black dark:text-dark-text focus:outline-none p-2 border-2 border-neo-black dark:border-white rounded-lg bg-card-white dark:bg-dark-card shadow-[2px_2px_0_#221C1B] dark:shadow-[2px_2px_0_#FBB5B1]"
+            className="p-2 text-neo-black dark:text-dark-text border border-peach/50 dark:border-white/15 rounded-full bg-white/80 dark:bg-dark-card/80"
             aria-label="Toggle Menu"
           >
-            {isOpen ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
+            {isOpen ? <HiX size={22} /> : <HiMenuAlt3 size={22} />}
           </button>
         </div>
       </div>
@@ -115,32 +130,31 @@ const Header = () => {
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-neo-black/50 backdrop-blur-sm z-40 md:hidden"
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 md:hidden"
               onClick={() => setIsOpen(false)}
             />
-            {/* Drawer */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed inset-y-0 right-0 z-50 w-72 bg-cream dark:bg-dark-bg border-l-4 border-neo-black dark:border-white flex flex-col"
+              className="fixed inset-y-0 right-0 z-50 w-72 bg-cream/95 dark:bg-dark-bg/95 backdrop-blur-xl border-l border-peach/40 dark:border-white/10 flex flex-col p-6 shadow-2xl"
             >
-              <div className="flex justify-end p-6 border-b-2 border-neo-black dark:border-white">
+              <div className="flex justify-between items-center pb-6 border-b border-peach/30 dark:border-white/10">
+                <span className="font-semibold text-lg">Menu Navigation</span>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-2 rounded-lg border-2 border-neo-black dark:border-white bg-peach hover:bg-dusty-rose text-neo-black transition-colors shadow-[2px_2px_0_#221C1B]"
+                  className="p-2 rounded-full bg-peach/40 text-neo-black hover:bg-dusty-rose hover:text-white transition-colors"
                 >
-                  <HiX size={24} />
+                  <HiX size={20} />
                 </button>
               </div>
               
-              <div className="p-6 flex flex-col gap-4">
+              <div className="flex flex-col gap-3 py-6">
                 {navLinks.map((link) => {
                   const isActive = location.pathname === link.path;
                   return (
@@ -148,10 +162,10 @@ const Header = () => {
                       key={link.name}
                       to={link.path}
                       onClick={() => setIsOpen(false)}
-                      className={`block px-5 py-3 rounded-xl border-2 border-neo-black dark:border-white text-lg font-semibold transition-all shadow-[3px_3px_0_#221C1B] dark:shadow-[3px_3px_0_#FFF6EE] ${
+                      className={`px-5 py-3 rounded-2xl text-base font-medium transition-all ${
                         isActive
-                          ? "bg-dusty-rose text-neo-black"
-                          : "bg-card-white dark:bg-dark-card text-neo-black dark:text-dark-text hover:bg-peach"
+                          ? "bg-gradient-to-r from-dusty-rose to-rose-accent text-white shadow-md"
+                          : "bg-white/60 dark:bg-dark-card/60 text-neo-black dark:text-dark-text hover:bg-peach/40"
                       }`}
                     >
                       {link.name}
@@ -160,19 +174,20 @@ const Header = () => {
                 })}
               </div>
 
-              <div className="mt-auto p-6 flex flex-col gap-4">
+              <div className="mt-auto flex flex-col gap-3 pt-6 border-t border-peach/30 dark:border-white/10">
                 <button
                   onClick={toggleLang}
-                  className="w-full py-3 rounded-xl border-2 border-neo-black dark:border-white bg-card-white dark:bg-dark-card text-neo-black dark:text-dark-text font-semibold shadow-[3px_3px_0_#221C1B] hover:translate-y-[2px] hover:shadow-[1px_1px_0_#221C1B] transition-all text-center"
+                  className="w-full py-3 rounded-2xl bg-white/80 dark:bg-dark-card/80 text-neo-black dark:text-dark-text font-medium text-sm border border-peach/40 dark:border-white/10 text-center"
                 >
-                  {lang === "id" ? "Switch to English" : "Ganti ke Bahasa Indonesia"}
+                  {lang === "id" ? "Ganti ke Bahasa English" : "Switch to Bahasa Indonesia"}
                 </button>
                 <a
                   href="https://github.com/Aprill33"
                   target="_blank"
                   rel="noreferrer"
-                  className="block text-center px-6 py-4 rounded-xl border-2 border-neo-black dark:border-white bg-neo-black text-cream dark:bg-white dark:text-neo-black font-semibold hover:bg-dusty-rose hover:text-neo-black transition-colors shadow-[4px_4px_0_#FBB5B1]"
+                  className="w-full text-center py-3 rounded-2xl bg-gradient-to-r from-dusty-rose to-rose-accent text-white font-medium text-sm flex items-center justify-center gap-2 shadow-md"
                 >
+                  <FaGithub size={18} />
                   Visit GitHub
                 </a>
               </div>

@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { personalInfo, socialIcons, contactIcons } from "../Data/Data";
 import { motion } from "framer-motion";
 import { ThemeLangContext } from "../Context/ThemeLangContext";
+import { HiPaperAirplane } from "react-icons/hi";
 
 const Contact = () => {
   const { lang } = useContext(ThemeLangContext);
@@ -9,8 +10,8 @@ const Contact = () => {
   const texts = {
     title: { id: "Hubungi Saya", en: "Contact Me" },
     desc: { 
-      id: "Punya pertanyaan atau ingin berkolaborasi? Jangan ragu untuk menghubungi saya melalui form di bawah atau via email dan media sosial.", 
-      en: "Have questions or want to collaborate? Don't hesitate to contact me via the form below or through email and social media." 
+      id: "Ingin mendiskusikan peluang kerja, proyek, atau kolaborasi? Silakan kirim pesan melalui form di bawah atau via media sosial.", 
+      en: "Interested in discussing job opportunities, projects, or collaboration? Send me a message via the form below or social media." 
     },
     infoTitle: { id: "Informasi Kontak", en: "Contact Information" },
     socialTitle: { id: "Sosial Media", en: "Social Media" },
@@ -20,42 +21,41 @@ const Contact = () => {
     formMsg: { id: "Pesan", en: "Message" },
     btnSubmit: { id: "Kirim Pesan", en: "Send Message" },
     placeholderName: { id: "Masukkan nama Anda", en: "Enter your name" },
-    placeholderSubject: { id: "Hal yang ingin didiskusikan", en: "What you want to discuss" },
-    placeholderMsg: { id: "Tulis pesan Anda di sini...", en: "Write your message here..." }
+    placeholderSubject: { id: "Tuliskan subjek pesan", en: "Enter subject" },
+    placeholderMsg: { id: "Tuliskan pesan Anda di sini...", en: "Write your message here..." }
   };
 
   return (
-    <section className="py-24 px-6 lg:px-12 bg-cream dark:bg-dark-bg min-h-[calc(100vh-80px)] flex items-center overflow-hidden border-t-4 border-neo-black dark:border-white transition-colors duration-300">
+    <section className="py-16 px-6 lg:px-12 relative min-h-[calc(100vh-120px)] flex items-center">
       <div className="max-w-7xl mx-auto w-full">
+        {/* Header */}
         <motion.div 
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="inline-block text-3xl md:text-4xl font-semibold text-neo-black dark:text-dark-text uppercase mb-6 relative">
-            <span className="relative z-10 transition-colors duration-300 hover:text-dusty-rose cursor-default">
-              {texts.title[lang]}
-            </span>
-            <div className="absolute bottom-1 left-0 w-full h-4 bg-peach -z-10" />
-          </h2>
-          <p className="mt-4 text-neo-black dark:text-dark-text font-medium text-base md:text-lg max-w-2xl mx-auto bg-card-white dark:bg-dark-card border-2 border-neo-black dark:border-white p-4 shadow-[4px_4px_0_#221C1B] dark:shadow-[4px_4px_0_#FFF6EE]">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-peach/40 dark:bg-dusty-rose/20 text-dusty-rose text-xs font-semibold uppercase tracking-wider mb-3">
+            {lang === "id" ? "Kontak" : "Get In Touch"}
+          </div>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neo-black dark:text-dark-text mb-4">
+            {texts.title[lang]}
+          </h1>
+          <p className="text-neo-black/70 dark:text-dark-text/70 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
             {texts.desc[lang]}
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-20 items-start">
-          {/* Contact Info */}
+        <div className="grid lg:grid-cols-[1fr_1.4fr] gap-10 items-start">
+          {/* Contact Info Sidebar */}
           <motion.div 
-            className="flex flex-col gap-8"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, type: "spring", stiffness: 50 }}
+            className="flex flex-col gap-6"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            <div className="bg-card-white dark:bg-dark-card p-8 rounded-2xl border-4 border-neo-black dark:border-white shadow-[8px_8px_0_#221C1B] dark:shadow-[8px_8px_0_#FBB5B1]">
-              <h3 className="text-lg md:text-xl font-semibold text-neo-black dark:text-dark-text mb-6 border-b-4 border-neo-black dark:border-white pb-4 uppercase">
+            <div className="bg-white/70 dark:bg-dark-card/70 p-8 rounded-3xl border border-peach/40 dark:border-white/10 soft-shadow backdrop-blur-md">
+              <h3 className="text-xl font-bold text-neo-black dark:text-dark-text mb-6 pb-4 border-b border-peach/30 dark:border-white/10">
                 {texts.infoTitle[lang]}
               </h3>
               
@@ -64,26 +64,26 @@ const Contact = () => {
                   href={`mailto:${personalInfo.email}`}
                   className="flex items-center gap-4 group"
                 >
-                  <div className="w-14 h-14 rounded-xl border-2 border-neo-black dark:border-white bg-peach text-neo-black flex items-center justify-center group-hover:bg-dusty-rose transition-all duration-300 shadow-[4px_4px_0_#221C1B] dark:shadow-[4px_4px_0_#FFF6EE] group-hover:translate-x-1 group-hover:translate-y-1 group-hover:shadow-none">
-                    <contactIcons.email className="text-2xl" />
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-dusty-rose to-peach text-white flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform shrink-0">
+                    <contactIcons.email />
                   </div>
                   <div>
-                    <p className="text-xs font-medium text-neo-black/60 dark:text-dark-text/60 mb-1 uppercase">Email</p>
-                    <p className="text-sm md:text-base text-neo-black dark:text-dark-text font-semibold group-hover:text-dusty-rose transition-colors">
+                    <p className="text-xs font-medium text-neo-black/50 dark:text-dark-text/50 uppercase">Email</p>
+                    <p className="text-base text-neo-black dark:text-dark-text font-semibold group-hover:text-dusty-rose transition-colors">
                       {personalInfo.email}
                     </p>
                   </div>
                 </a>
 
                 <div className="flex items-center gap-4 group">
-                  <div className="w-14 h-14 rounded-xl border-2 border-neo-black dark:border-white bg-peach text-neo-black flex items-center justify-center group-hover:bg-dusty-rose transition-all duration-300 shadow-[4px_4px_0_#221C1B] dark:shadow-[4px_4px_0_#FFF6EE] group-hover:translate-x-1 group-hover:translate-y-1 group-hover:shadow-none">
-                    <contactIcons.location className="text-2xl" />
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-dusty-rose to-peach text-white flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform shrink-0">
+                    <contactIcons.location />
                   </div>
                   <div>
-                    <p className="text-xs font-medium text-neo-black/60 dark:text-dark-text/60 mb-1 uppercase">
+                    <p className="text-xs font-medium text-neo-black/50 dark:text-dark-text/50 uppercase">
                       {lang === "id" ? "Lokasi" : "Location"}
                     </p>
-                    <p className="text-sm md:text-base text-neo-black dark:text-dark-text font-semibold transition-colors group-hover:text-dusty-rose">
+                    <p className="text-base text-neo-black dark:text-dark-text font-semibold group-hover:text-dusty-rose transition-colors">
                       {personalInfo.location[lang]}
                     </p>
                   </div>
@@ -91,47 +91,44 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="bg-card-white dark:bg-dark-card p-8 rounded-2xl border-4 border-neo-black dark:border-white shadow-[8px_8px_0_#221C1B] dark:shadow-[8px_8px_0_#FBB5B1]">
-              <h3 className="text-lg md:text-xl font-semibold text-neo-black dark:text-dark-text mb-6 border-b-4 border-neo-black dark:border-white pb-4 uppercase">
+            <div className="bg-white/70 dark:bg-dark-card/70 p-8 rounded-3xl border border-peach/40 dark:border-white/10 soft-shadow backdrop-blur-md">
+              <h3 className="text-xl font-bold text-neo-black dark:text-dark-text mb-6 pb-4 border-b border-peach/30 dark:border-white/10">
                 {texts.socialTitle[lang]}
               </h3>
-              <div className="flex gap-6">
+              <div className="flex gap-4">
                 <a
                   href={personalInfo.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-16 h-16 rounded-xl bg-cream dark:bg-dark-bg border-4 border-neo-black dark:border-white flex items-center justify-center text-neo-black dark:text-dark-text hover:bg-neo-black hover:text-white dark:hover:bg-white dark:hover:text-neo-black transition-all duration-300 shadow-[4px_4px_0_#221C1B] dark:shadow-[4px_4px_0_#FFF6EE] hover:translate-x-1 hover:translate-y-1 hover:shadow-none"
+                  className="w-14 h-14 rounded-2xl bg-cream dark:bg-dark-bg border border-peach/40 dark:border-white/10 flex items-center justify-center text-neo-black dark:text-dark-text hover:bg-dusty-rose hover:text-white transition-all duration-300 soft-shadow hover:scale-105"
                   aria-label="GitHub"
                 >
-                  <socialIcons.github className="text-3xl" />
+                  <socialIcons.github className="text-2xl" />
                 </a>
                 <a
                   href={personalInfo.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-16 h-16 rounded-xl bg-cream dark:bg-dark-bg border-4 border-neo-black dark:border-white flex items-center justify-center text-neo-black dark:text-dark-text hover:bg-[#0077B5] hover:text-white hover:border-[#0077B5] transition-all duration-300 shadow-[4px_4px_0_#221C1B] dark:shadow-[4px_4px_0_#FFF6EE] hover:translate-x-1 hover:translate-y-1 hover:shadow-none"
+                  className="w-14 h-14 rounded-2xl bg-cream dark:bg-dark-bg border border-peach/40 dark:border-white/10 flex items-center justify-center text-neo-black dark:text-dark-text hover:bg-[#0077B5] hover:text-white transition-all duration-300 soft-shadow hover:scale-105"
                   aria-label="LinkedIn"
                 >
-                  <socialIcons.linkedin className="text-3xl" />
+                  <socialIcons.linkedin className="text-2xl" />
                 </a>
               </div>
             </div>
           </motion.div>
 
-          {/* Contact Form using Formspree */}
+          {/* Contact Form */}
           <motion.div 
-            className="bg-card-white dark:bg-dark-card p-8 md:p-10 rounded-2xl border-4 border-neo-black dark:border-white shadow-[12px_12px_0_#221C1B] dark:shadow-[12px_12px_0_#FBB5B1]"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, type: "spring", stiffness: 50, delay: 0.2 }}
+            className="bg-white/70 dark:bg-dark-card/70 p-8 md:p-10 rounded-3xl border border-peach/40 dark:border-white/10 soft-shadow backdrop-blur-md"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
-            {/* Form action uses Formspree or can use mailto: */}
-            {/* If using Formspree, replace "your_form_id" with the actual ID from formspree.io */}
-            <form action="https://formspree.io/f/mrbeyvyo" method="POST" className="flex flex-col gap-6">
-              <div className="grid md:grid-cols-2 gap-6">
+            <form action="https://formspree.io/f/mrbeyvyo" method="POST" className="flex flex-col gap-5">
+              <div className="grid md:grid-cols-2 gap-5">
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="name" className="text-xs md:text-sm font-semibold text-neo-black dark:text-dark-text uppercase">
+                  <label htmlFor="name" className="text-xs font-semibold text-neo-black/80 dark:text-dark-text/80 uppercase">
                     {texts.formName[lang]}
                   </label>
                   <input
@@ -140,11 +137,11 @@ const Contact = () => {
                     name="name"
                     required
                     placeholder={texts.placeholderName[lang]}
-                    className="px-5 py-3 md:py-4 bg-cream dark:bg-dark-bg border-4 border-neo-black dark:border-white rounded-xl focus:outline-none focus:ring-0 focus:border-dusty-rose transition-all font-medium text-neo-black dark:text-dark-text shadow-[4px_4px_0_#221C1B] dark:shadow-[4px_4px_0_#FFF6EE]"
+                    className="px-4 py-3 bg-cream/70 dark:bg-dark-bg/80 border border-peach/40 dark:border-white/10 rounded-2xl focus:outline-none focus:border-dusty-rose focus:ring-2 focus:ring-dusty-rose/20 transition-all font-medium text-neo-black dark:text-dark-text text-sm"
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="email" className="text-xs md:text-sm font-semibold text-neo-black dark:text-dark-text uppercase">
+                  <label htmlFor="email" className="text-xs font-semibold text-neo-black/80 dark:text-dark-text/80 uppercase">
                     {texts.formEmail[lang]}
                   </label>
                   <input
@@ -153,13 +150,13 @@ const Contact = () => {
                     name="email"
                     required
                     placeholder="email@example.com"
-                    className="px-5 py-3 md:py-4 bg-cream dark:bg-dark-bg border-4 border-neo-black dark:border-white rounded-xl focus:outline-none focus:ring-0 focus:border-dusty-rose transition-all font-medium text-neo-black dark:text-dark-text shadow-[4px_4px_0_#221C1B] dark:shadow-[4px_4px_0_#FFF6EE]"
+                    className="px-4 py-3 bg-cream/70 dark:bg-dark-bg/80 border border-peach/40 dark:border-white/10 rounded-2xl focus:outline-none focus:border-dusty-rose focus:ring-2 focus:ring-dusty-rose/20 transition-all font-medium text-neo-black dark:text-dark-text text-sm"
                   />
                 </div>
               </div>
               
               <div className="flex flex-col gap-2">
-                <label htmlFor="subject" className="text-xs md:text-sm font-semibold text-neo-black dark:text-dark-text uppercase">
+                <label htmlFor="subject" className="text-xs font-semibold text-neo-black/80 dark:text-dark-text/80 uppercase">
                   {texts.formSubject[lang]}
                 </label>
                 <input
@@ -168,12 +165,12 @@ const Contact = () => {
                   name="subject"
                   required
                   placeholder={texts.placeholderSubject[lang]}
-                  className="px-5 py-3 md:py-4 bg-cream dark:bg-dark-bg border-4 border-neo-black dark:border-white rounded-xl focus:outline-none focus:ring-0 focus:border-dusty-rose transition-all font-medium text-neo-black dark:text-dark-text shadow-[4px_4px_0_#221C1B] dark:shadow-[4px_4px_0_#FFF6EE]"
+                  className="px-4 py-3 bg-cream/70 dark:bg-dark-bg/80 border border-peach/40 dark:border-white/10 rounded-2xl focus:outline-none focus:border-dusty-rose focus:ring-2 focus:ring-dusty-rose/20 transition-all font-medium text-neo-black dark:text-dark-text text-sm"
                 />
               </div>
 
               <div className="flex flex-col gap-2">
-                <label htmlFor="message" className="text-xs md:text-sm font-semibold text-neo-black dark:text-dark-text uppercase">
+                <label htmlFor="message" className="text-xs font-semibold text-neo-black/80 dark:text-dark-text/80 uppercase">
                   {texts.formMsg[lang]}
                 </label>
                 <textarea
@@ -182,16 +179,17 @@ const Contact = () => {
                   required
                   rows={5}
                   placeholder={texts.placeholderMsg[lang]}
-                  className="px-5 py-3 md:py-4 bg-cream dark:bg-dark-bg border-4 border-neo-black dark:border-white rounded-xl focus:outline-none focus:ring-0 focus:border-dusty-rose transition-all font-medium text-neo-black dark:text-dark-text shadow-[4px_4px_0_#221C1B] dark:shadow-[4px_4px_0_#FFF6EE] resize-none"
+                  className="px-4 py-3 bg-cream/70 dark:bg-dark-bg/80 border border-peach/40 dark:border-white/10 rounded-2xl focus:outline-none focus:border-dusty-rose focus:ring-2 focus:ring-dusty-rose/20 transition-all font-medium text-neo-black dark:text-dark-text text-sm resize-none"
                 ></textarea>
               </div>
 
               <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
                 type="submit"
-                className="mt-4 w-full py-4 md:py-5 bg-dusty-rose text-neo-black font-semibold uppercase text-base md:text-lg border-4 border-neo-black shadow-[6px_6px_0_#221C1B] dark:shadow-[6px_6px_0_#FFF6EE] hover:bg-peach hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0_#221C1B] dark:hover:shadow-[4px_4px_0_#FFF6EE] active:translate-x-[6px] active:translate-y-[6px] active:shadow-none transition-all"
+                className="mt-2 w-full py-4 bg-gradient-to-r from-dusty-rose to-rose-accent text-white font-semibold rounded-2xl text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
+                <HiPaperAirplane className="text-lg rotate-45" />
                 {texts.btnSubmit[lang]}
               </motion.button>
             </form>

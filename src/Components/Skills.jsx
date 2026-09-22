@@ -10,12 +10,12 @@ const Skills = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.1 },
+      transition: { staggerChildren: 0.12 },
     },
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
@@ -24,63 +24,75 @@ const Skills = () => {
   };
 
   return (
-    <section className="py-24 px-6 lg:px-12 bg-cream dark:bg-dark-bg border-t-4 border-neo-black dark:border-white transition-colors duration-300">
+    <section className="py-20 px-6 lg:px-12 relative">
       <div className="max-w-7xl mx-auto">
         <motion.div 
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5 }}
         >
-          <h2 className="inline-block text-3xl md:text-4xl font-semibold text-neo-black dark:text-dark-text uppercase mb-6 relative">
-            <span className="relative z-10 transition-colors duration-300 hover:text-dusty-rose cursor-default">
-              {skillsData.title[lang]}
-            </span>
-            <div className="absolute bottom-1 left-0 w-full h-4 bg-peach -z-10" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-peach/40 dark:bg-dusty-rose/20 text-dusty-rose text-xs font-semibold uppercase tracking-wider mb-3">
+            {lang === "id" ? "Keahlian" : "Expertise"}
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-neo-black dark:text-dark-text mb-4">
+            {skillsData.title[lang]}
           </h2>
-          <p className="mt-4 text-neo-black dark:text-dark-text font-medium text-base md:text-lg max-w-2xl mx-auto bg-card-white dark:bg-dark-card border-2 border-neo-black dark:border-white p-4 shadow-[4px_4px_0_#221C1B] dark:shadow-[4px_4px_0_#FFF6EE]">
+          <p className="text-neo-black/70 dark:text-dark-text/70 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
             {skillsData.subtitle[lang]}
           </p>
         </motion.div>
 
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-60px" }}
         >
-          {skillsData.list.map((skillGroup, index) => (
-            <motion.div
-              key={index}
-              variants={cardVariants}
-              whileHover={{ y: -5, x: -5 }}
-              className="bg-card-white dark:bg-dark-card p-8 rounded-2xl border-4 border-neo-black dark:border-white shadow-[6px_6px_0_#221C1B] dark:shadow-[6px_6px_0_#FBB5B1] transition-all duration-300 group"
-            >
-              <h3 className="text-lg md:text-xl font-semibold text-neo-black dark:text-dark-text mb-6 flex items-center gap-3 uppercase">
-                <span className="w-10 h-10 border-2 border-neo-black dark:border-white bg-peach text-neo-black flex items-center justify-center text-lg font-semibold shadow-[2px_2px_0_#221C1B]">
-                  {index + 1}
-                </span>
-                {skillGroup.category}
-              </h3>
-              
-              <div className="flex flex-wrap gap-3">
-                {skillGroup.items.map((item, idx) => {
-                  const Icon = item.icon;
-                  return (
-                    <div
-                      key={idx}
-                      className="flex items-center gap-2 px-4 py-2 bg-cream dark:bg-dark-bg border-2 border-neo-black dark:border-white text-neo-black dark:text-dark-text font-medium text-sm md:text-base transition-all duration-300 hover:bg-dusty-rose dark:hover:bg-dusty-rose hover:text-neo-black cursor-default shadow-[2px_2px_0_#221C1B] dark:shadow-[2px_2px_0_#FFF6EE] hover:translate-x-1 hover:translate-y-1 hover:shadow-none"
-                    >
-                      <Icon className="text-xl" />
-                      <span>{item.name}</span>
+          {skillsData.list.map((skillGroup, index) => {
+            const GroupIcon = skillGroup.icon;
+            return (
+              <motion.div
+                key={index}
+                variants={cardVariants}
+                whileHover={{ y: -6 }}
+                className="bg-white/70 dark:bg-dark-card/70 p-8 rounded-3xl border border-peach/40 dark:border-white/10 soft-shadow backdrop-blur-md flex flex-col justify-between hover:border-dusty-rose/50 transition-all duration-300 group"
+              >
+                <div>
+                  <div className="flex items-center gap-3 mb-6 pb-4 border-b border-peach/30 dark:border-white/10">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-dusty-rose to-peach text-white flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform">
+                      <GroupIcon />
                     </div>
-                  );
-                })}
-              </div>
-            </motion.div>
-          ))}
+                    <div>
+                      <h3 className="text-xl font-bold text-neo-black dark:text-dark-text">
+                        {skillGroup.category}
+                      </h3>
+                      <span className="text-xs text-dusty-rose font-medium">
+                        {skillGroup.items.length} Skills & Tools
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-2.5">
+                    {skillGroup.items.map((item, idx) => {
+                      const Icon = item.icon;
+                      return (
+                        <div
+                          key={idx}
+                          className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-cream dark:bg-dark-bg/80 border border-peach/40 dark:border-white/10 text-neo-black dark:text-dark-text font-medium text-sm transition-all duration-300 hover:bg-gradient-to-r hover:from-dusty-rose hover:to-rose-accent hover:text-white hover:border-transparent hover:scale-105 cursor-default soft-shadow"
+                        >
+                          <Icon className="text-base text-dusty-rose group-hover:text-white transition-colors" />
+                          <span>{item.name}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

@@ -12,9 +12,14 @@ function App() {
   return (
     <ThemeLangProvider>
       <BrowserRouter>
-        <div className="flex flex-col min-h-screen bg-cream text-neo-black dark:bg-dark-bg dark:text-dark-text font-sans selection:bg-dusty-rose/40 selection:text-neo-black dark:selection:text-dark-text transition-colors duration-300">
+        <div className="flex flex-col min-h-screen bg-cream text-neo-black dark:bg-dark-bg dark:text-dark-text font-sans selection:bg-dusty-rose/30 selection:text-neo-black dark:selection:text-dark-text transition-colors duration-300 relative overflow-hidden">
+          
+          {/* Subtle Ambient Soft Glow Orbs */}
+          <div className="fixed top-[-10%] left-[-10%] w-[45vw] h-[45vw] rounded-full bg-peach/30 dark:bg-dusty-rose/10 blur-[120px] pointer-events-none z-0" />
+          <div className="fixed bottom-[-10%] right-[-10%] w-[45vw] h-[45vw] rounded-full bg-dusty-rose/20 dark:bg-rose-accent/10 blur-[140px] pointer-events-none z-0" />
+
           <Header />
-          <main className="flex-grow pt-20">
+          <main className="flex-grow pt-24 z-10">
             <Routes>
               <Route
                 path="/"
