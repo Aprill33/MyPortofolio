@@ -11,10 +11,11 @@
   --color-rose-accent: #D96277;
   --color-neo-black: #2B2326;
 
-  /* Dark mode variants */
-  --color-dark-bg: #161214;
-  --color-dark-card: #221A1D;
-  --color-dark-card-lighter: #2E2327;
+  /* Rich Luxury Dark Mode Palette - Deep Mauve, Glowing Rose, Dark Velvet */
+  --color-dark-bg: #160F14;
+  --color-dark-card: #22171F;
+  --color-dark-card-lighter: #2E1F2A;
+  --color-dark-border: #4A283C;
   --color-dark-text: #FAF6F0;
 }
 
@@ -22,34 +23,70 @@
 
 @layer base {
   body {
-    @apply bg-cream text-neo-black dark:bg-dark-bg dark:text-dark-text transition-colors duration-300 font-sans antialiased;
+    @apply bg-cream text-neo-black dark:bg-gradient-to-b dark:from-[#1A1117] dark:via-[#140F13] dark:to-[#1A1016] dark:text-dark-text transition-colors duration-300 font-sans antialiased min-h-screen;
     scroll-behavior: smooth;
   }
 }
 
 /* Custom Soft Animations & UI Utilities */
 .soft-glass {
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
 
 .dark .soft-glass {
-  background: rgba(34, 26, 29, 0.75);
+  background: rgba(30, 20, 27, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  border-color: rgba(232, 122, 138, 0.25);
 }
 
 .soft-shadow {
-  box-shadow: 0 10px 30px -5px rgba(232, 122, 138, 0.12), 0 4px 12px -2px rgba(43, 35, 38, 0.05);
+  box-shadow: 0 10px 30px -5px rgba(232, 122, 138, 0.14), 0 4px 12px -2px rgba(43, 35, 38, 0.06);
 }
 
 .dark .soft-shadow {
-  box-shadow: 0 10px 30px -5px rgba(232, 122, 138, 0.2), 0 4px 12px -2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 35px -5px rgba(232, 122, 138, 0.25), 0 4px 20px -2px rgba(0, 0, 0, 0.6);
 }
 
-.soft-glow {
-  box-shadow: 0 0 25px rgba(232, 122, 138, 0.35);
+.pink-glow {
+  box-shadow: 0 0 25px rgba(232, 122, 138, 0.45);
+}
+
+.dark .pink-glow {
+  box-shadow: 0 0 30px rgba(232, 122, 138, 0.6), 0 0 10px rgba(217, 98, 119, 0.4);
+}
+
+.text-pink-glow {
+  text-shadow: 0 0 16px rgba(232, 122, 138, 0.5);
+}
+
+.dark .text-pink-glow {
+  text-shadow: 0 0 22px rgba(232, 122, 138, 0.8), 0 0 8px rgba(255, 180, 195, 0.5);
+}
+
+.dark-card-glow {
+  border: 1px solid rgba(232, 122, 138, 0.35);
+  box-shadow: inset 0 0 20px rgba(232, 122, 138, 0.06), 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.dark-card-glow:hover {
+  border-color: rgba(232, 122, 138, 0.8);
+  box-shadow: inset 0 0 25px rgba(232, 122, 138, 0.12), 0 0 25px rgba(232, 122, 138, 0.3);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 3.5s infinite linear;
 }
 
 /* Custom Scrollbar */

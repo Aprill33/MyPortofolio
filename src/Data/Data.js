@@ -1,24 +1,24 @@
 import {
-    FaReact,
-    FaHtml5,
-    FaCss3Alt,
-    FaGitAlt,
-    FaGithub,
-    FaDatabase,
-    FaLinkedin,
-    FaGraduationCap,
-    FaUserCheck,
-    FaTools,
-    FaCode,
+  FaReact,
+  FaHtml5,
+  FaCss3Alt,
+  FaGitAlt,
+  FaGithub,
+  FaDatabase,
+  FaLinkedin,
+  FaGraduationCap,
+  FaUserCheck,
+  FaTools,
+  FaCode,
 } from "react-icons/fa";
 import {
-    SiJavascript,
-    SiTailwindcss,
-    SiDotnet,
-    SiMysql,
-    SiPostman,
-    SiXampp,
-    SiVercel,
+  SiJavascript,
+  SiTailwindcss,
+  SiDotnet,
+  SiMysql,
+  SiPostman,
+  SiXampp,
+  SiVercel,
 } from "react-icons/si";
 import { DiVisualstudio } from "react-icons/di";
 import { VscVscode } from "react-icons/vsc";
@@ -115,33 +115,34 @@ import htmlDaftar from "../assets/HTML/HalamanDaftar_HTML.png";
 import imgProjectC from "../assets/Bahasa_C/Project_Bahasa_C.jpeg";
 
 export const personalInfo = {
-    name: "Aprilliyanti",
-    role: "Junior Backend / Fullstack Developer",
-    github: "https://github.com/Aprill33",
-    linkedin: "https://www.linkedin.com/in/aprilliyanti-9912bb426",
-    email: "aprillee344@gmail.com",
-    location: {
-      id: "Bandung, Indonesia",
-      en: "Bandung, Indonesia"
+  name: "Aprilliyanti",
+  role: "Junior Backend / Fullstack Developer",
+  github: "https://github.com/Aprill33",
+  linkedin: "https://www.linkedin.com/in/aprilliyanti-9912bb426",
+  email: "aprillee344@gmail.com",
+  phone: "+62 896-5277-2282",
+  location: {
+    id: "Bandung, Indonesia",
+    en: "Bandung, Indonesia"
+  },
+  about: {
+    heroTitle: {
+      id: "Halo, Saya Aprilliyanti",
+      en: "Hello, I'm Aprilliyanti"
     },
-    about: {
-      heroTitle: {
-        id: "Halo, Saya Aprilliyanti",
-        en: "Hello, I'm Aprilliyanti"
-      },
-      heroDesc: {
-        id: "Mahasiswa D3 Manajemen Informatika Universitas Nasional PASIM Bandung, penerima Beasiswa Pemberdayaan Umat Berkelanjutan (PUB), fokus pada .NET dan Full-Stack Web Development. Berpengalaman membangun aplikasi desktop dan web dengan C#, ASP.NET Web API, React.js, serta SQL Server/MySQL. Memahami OOP, RESTful API, Git/GitHub, dan pengembangan antarmuka responsif. Siap berkontribusi di posisi Junior Backend/Fullstack Developer.",
-        en: "D3 Informatics Management student at PASIM National University Bandung, recipient of the Continuous Ummah Empowerment (PUB) Scholarship, focusing on .NET and Full-Stack Web Development. Experienced in building desktop and web applications with C#, ASP.NET Web API, React.js, and SQL Server/MySQL. Solid understanding of OOP, RESTful APIs, Git/GitHub, and responsive interface design. Ready to contribute as a Junior Backend/Fullstack Developer."
-      },
-      aboutDesc1: {
-        id: "Saya Aprilliyanti, mahasiswa aktif D3 Manajemen Informatika di Universitas Nasional PASIM Bandung sekaligus penerima Beasiswa Pemberdayaan Umat Berkelanjutan (PUB). Melalui program beasiswa ini, saya telah menjalani pelatihan pemrograman secara intensif dan disiplin dari tingkat dasar hingga lanjutan.",
-        en: "I am Aprilliyanti, an active D3 Informatics Management student at PASIM National University Bandung and recipient of the Continuous Ummah Empowerment (PUB) Scholarship. Through this scholarship, I have undergone intensive programming training from fundamentals to advanced concepts."
-      },
-      aboutDesc2: {
-        id: "Fokus keahlian utama saya meliputi <span class='text-dusty-rose font-semibold'>C#, ASP.NET Web API, .NET Framework, React.js, JavaScript, HTML5, CSS3, dan Tailwind CSS</span>, serta manajemen basis data menggunakan <span class='text-dusty-rose font-semibold'>Microsoft SQL Server & MySQL</span>. Memiliki semangat pembelajar yang kuat, kemampuan pemecahan masalah (problem solving), kerja sama tim yang solid, dan siap memberikan kontribusi terbaik di lingkungan profesional.",
-        en: "My primary tech stack includes <span class='text-dusty-rose font-semibold'>C#, ASP.NET Web API, .NET Framework, React.js, JavaScript, HTML5, CSS3, and Tailwind CSS</span>, alongside database management using <span class='text-dusty-rose font-semibold'>Microsoft SQL Server & MySQL</span>. Driven by strong learning enthusiasm, problem-solving mindset, and teamwork skills to deliver high-quality software solutions."
-      }
+    heroDesc: {
+      id: "Mahasiswa D3 Manajemen Informatika Universitas Nasional PASIM Bandung, penerima Beasiswa Pemberdayaan Umat Berkelanjutan (PUB), fokus pada .NET dan Full-Stack Web Development. Berpengalaman membangun aplikasi desktop dan web dengan C#, ASP.NET Web API, React.js, serta SQL Server/MySQL. Memahami OOP, RESTful API, Git/GitHub, dan pengembangan antarmuka responsif. Siap berkontribusi di posisi Junior Backend/Fullstack Developer.",
+      en: "D3 Informatics Management student at PASIM National University Bandung, recipient of the Continuous Ummah Empowerment (PUB) Scholarship, focusing on .NET and Full-Stack Web Development. Experienced in building desktop and web applications with C#, ASP.NET Web API, React.js, and SQL Server/MySQL. Solid understanding of OOP, RESTful APIs, Git/GitHub, and responsive interface design. Ready to contribute as a Junior Backend/Fullstack Developer."
+    },
+    aboutDesc1: {
+      id: "Saya Aprilliyanti, mahasiswa aktif D3 Manajemen Informatika di Universitas Nasional PASIM Bandung sekaligus penerima Beasiswa Pemberdayaan Umat Berkelanjutan (PUB). Melalui program beasiswa ini, saya telah menjalani pelatihan pemrograman secara intensif dan disiplin dari tingkat dasar hingga lanjutan.",
+      en: "I am Aprilliyanti, an active D3 Informatics Management student at PASIM National University Bandung and recipient of the Continuous Ummah Empowerment (PUB) Scholarship. Through this scholarship, I have undergone intensive programming training from fundamentals to advanced concepts."
+    },
+    aboutDesc2: {
+      id: "Fokus keahlian utama saya meliputi <span class='text-dusty-rose font-semibold'>C#, ASP.NET Web API, .NET Framework, React.js, JavaScript, HTML5, CSS3, dan Tailwind CSS</span>, serta manajemen basis data menggunakan <span class='text-dusty-rose font-semibold'>Microsoft SQL Server & MySQL</span>. Memiliki semangat pembelajar yang kuat, kemampuan pemecahan masalah (problem solving), kerja sama tim yang solid, dan siap memberikan kontribusi terbaik di lingkungan profesional.",
+      en: "My primary tech stack includes <span class='text-dusty-rose font-semibold'>C#, ASP.NET Web API, .NET Framework, React.js, JavaScript, HTML5, CSS3, and Tailwind CSS</span>, alongside database management using <span class='text-dusty-rose font-semibold'>Microsoft SQL Server & MySQL</span>. Driven by strong learning enthusiasm, problem-solving mindset, and teamwork skills to deliver high-quality software solutions."
     }
+  }
 };
 
 export const educationData = {
@@ -191,6 +192,7 @@ export const nonFormalEducationData = {
       title: "Pelatihan Dasar React (React Fundamental)",
       period: "Jul - Sep 2026",
       cert: certReact,
+      icon: FaReact,
       desc: {
         id: "Menguasai React v19, Functional Components, Hooks, Context API, Router DOM, State Management, dan SPA Deployment.",
         en: "Mastered React v19, Functional Components, Hooks, Context API, Router DOM, State Management, and SPA Deployment."
@@ -200,6 +202,7 @@ export const nonFormalEducationData = {
       title: "Pelatihan Pemrograman C# Lanjutan (.NET Web API)",
       period: "Feb - Jun 2026",
       cert: certCSharpLanjutan,
+      icon: SiDotnet,
       desc: {
         id: "Merancang RESTful Web API dengan ASP.NET, C#, Entity/Relational Database Architecture, dan Postman Testing.",
         en: "Designing RESTful Web APIs using ASP.NET, C#, Relational Database Architecture, and Postman testing."
@@ -209,6 +212,7 @@ export const nonFormalEducationData = {
       title: "Pelatihan Git & GitHub",
       period: "Jan - Feb 2026",
       cert: certGithub,
+      icon: FaGithub,
       desc: {
         id: "Manajemen versi kode (Version Control), branching strategy, pull requests, kolaborasi tim, dan CI/CD dasar.",
         en: "Version control management, branching strategies, pull requests, team collaboration, and basic CI/CD."
@@ -218,6 +222,7 @@ export const nonFormalEducationData = {
       title: "Pelatihan Dasar Pemrograman C# (.NET Framework)",
       period: "Agu 2025 - Jan 2026",
       cert: certCSharp,
+      icon: TbBrandCSharp,
       desc: {
         id: "Penerapan konsep OOP (Object Oriented Programming), GUI Desktop App, WinForms, dan CRUD Database.",
         en: "Applied OOP concepts, Desktop GUI development, WinForms, and database CRUD operations."
@@ -227,6 +232,7 @@ export const nonFormalEducationData = {
       title: "Pelatihan Pengembangan Web (HTML, CSS & JavaScript)",
       period: "Jun - Agu 2025",
       cert: certWeb,
+      icon: SiJavascript,
       desc: {
         id: "Pengembangan antarmuka web responsif, manipulasi DOM, layouting modern CSS flexbox/grid, dan logika JavaScript.",
         en: "Responsive web interface development, DOM manipulation, modern CSS flexbox/grid layouting, and JavaScript logic."
@@ -237,6 +243,7 @@ export const nonFormalEducationData = {
       period: "Jan - Jun 2025",
       cert: certDS,
       cert2: certDb,
+      icon: FaDatabase,
       desc: {
         id: "Struktur data efisien (Array, Linked List, Queue, Stack) serta perancangan database relasional SQL Server & MySQL.",
         en: "Efficient data structures (Arrays, Linked Lists, Queues, Stacks) and relational database design for SQL Server & MySQL."
@@ -246,6 +253,7 @@ export const nonFormalEducationData = {
       title: "Pelatihan Logika & Algoritma Pemrograman C",
       period: "Sep 2024 - Jan 2025",
       cert: certC,
+      icon: FaCode,
       desc: {
         id: "Dasar pemikiran komputasional, pointer, alokasi memori, struktur kontrol, dan pemecahan masalah berbasis C.",
         en: "Fundamentals of computational thinking, pointers, memory allocation, control structures, and C programming."
@@ -256,7 +264,7 @@ export const nonFormalEducationData = {
 
 export const skillsData = {
   title: { id: "Keahlian & Spesialisasi", en: "Skills & Specialization" },
-  subtitle: { 
+  subtitle: {
     id: "Kombinasi Hard Skills teknis, Software Tools pengembang, dan Soft Skills profesional.",
     en: "A comprehensive blend of technical Hard Skills, Software Tools, and professional Soft Skills."
   },
@@ -316,61 +324,61 @@ export const certificatesData = {
     en: "Official certificates from intensive training programs at PUB PASIM National University (2024 - 2026)."
   },
   list: [
-    { 
-      title: "Pelatihan Dasar React (React Fundamental)", 
-      category: "Web & React", 
+    {
+      title: { id: "Pelatihan Dasar React (React Fundamental)", en: "React Fundamentals Training" },
+      category: "Web & React",
       period: "Jul - Sep 2026",
       issuer: "PUB PASIM Bandung",
-      image: certReact 
+      image: certReact
     },
-    { 
-      title: "Pelatihan Pemrograman C# Lanjutan (.NET Web API)", 
-      category: "Backend & .NET", 
+    {
+      title: { id: "Pelatihan Pemrograman C# Lanjutan (.NET Web API)", en: "Advanced C# (.NET Web API) Training" },
+      category: "Backend & .NET",
       period: "Feb - Jun 2026",
       issuer: "PUB PASIM Bandung",
-      image: certCSharpLanjutan 
+      image: certCSharpLanjutan
     },
-    { 
-      title: "Pelatihan Git & GitHub", 
-      category: "Tools & Git", 
+    {
+      title: { id: "Pelatihan Git & GitHub", en: "Git & GitHub Training" },
+      category: "Tools & Git",
       period: "Jan - Feb 2026",
       issuer: "PUB PASIM Bandung",
-      image: certGithub 
+      image: certGithub
     },
-    { 
-      title: "Pelatihan Dasar Pemrograman C# (.NET Framework)", 
-      category: "Backend & .NET", 
+    {
+      title: { id: "Pelatihan Dasar Pemrograman C# (.NET Framework)", en: "C# Fundamentals (.NET) Training" },
+      category: "Backend & .NET",
       period: "Agu 2025 - Jan 2026",
       issuer: "PUB PASIM Bandung",
-      image: certCSharp 
+      image: certCSharp
     },
-    { 
-      title: "Pelatihan Pengembangan Web (HTML, CSS & JS)", 
-      category: "Web & React", 
+    {
+      title: { id: "Pelatihan Pengembangan Web (HTML, CSS & JS)", en: "Web Development (HTML, CSS & JS) Training" },
+      category: "Web & React",
       period: "Jun - Agu 2025",
       issuer: "PUB PASIM Bandung",
-      image: certWeb 
+      image: certWeb
     },
-    { 
-      title: "Pelatihan Sistem Basis Data (Database SQL)", 
-      category: "Database", 
+    {
+      title: { id: "Pelatihan Sistem Basis Data (Database SQL)", en: "Database Systems (SQL) Training" },
+      category: "Database",
       period: "Jan - Jun 2025",
       issuer: "PUB PASIM Bandung",
-      image: certDb 
+      image: certDb
     },
-    { 
-      title: "Pelatihan Struktur Data", 
-      category: "Database", 
+    {
+      title: { id: "Pelatihan Struktur Data", en: "Data Structures Training" },
+      category: "Database",
       period: "Jan - Jun 2025",
       issuer: "PUB PASIM Bandung",
-      image: certDS 
+      image: certDS
     },
-    { 
-      title: "Pelatihan Logika & Algoritma Pemrograman C", 
-      category: "Fundamental", 
+    {
+      title: { id: "Pelatihan Logika & Algoritma Pemrograman C", en: "C Logic & Algorithms Training" },
+      category: "Fundamental",
       period: "Sep 2024 - Jan 2025",
       issuer: "PUB PASIM Bandung",
-      image: certC 
+      image: certC
     },
   ]
 };
@@ -391,12 +399,20 @@ export const projectsData = {
         id: "Aplikasi e-commerce florist komprehensif dengan katalog bunga interaktif, keranjang belanja, checkout, sistem voucher discount, wishlist, riwayat pesanan, serta Dashboard Admin pengelola stok & pesanan.\n\nMemiliki fitur andalan Custom Bouquet Builder dengan kalkulasi harga otomatis secara real-time, autentikasi user, ProtectedRoute, dan deployment SPA di Vercel.",
         en: "Comprehensive florist e-commerce application featuring interactive flower catalog, cart, checkout, voucher system, wishlist, order history, and Admin Management Dashboard.\n\nHighlights include Custom Bouquet Builder with real-time price calculation, user authentication, ProtectedRoute, and SPA deployment on Vercel."
       },
-      highlights: [
-        "Fitur Custom Bouquet Builder dengan harga terhitung otomatis",
-        "Autentikasi User & Multi-role Access Control (Admin & Pelanggan)",
-        "Katalog, Keranjang, Checkout, Voucher, Wishlist, dan History Pesanan",
-        "Dashboard Admin lengkap: CRUD Bunga, Voucher, Pesanan, dan Profil"
-      ],
+      highlights: {
+        id: [
+          "Fitur Custom Bouquet Builder dengan harga terhitung otomatis",
+          "Autentikasi User & Multi-role Access Control (Admin & Pelanggan)",
+          "Katalog, Keranjang, Checkout, Voucher, Wishlist, dan History Pesanan",
+          "Dashboard Admin lengkap: CRUD Bunga, Voucher, Pesanan, dan Profil"
+        ],
+        en: [
+          "Custom Bouquet Builder feature with real-time automated price calculation",
+          "User Authentication & Multi-role Access Control (Admin & Customer)",
+          "Interactive Flower Catalog, Cart, Checkout, Voucher, Wishlist, and Order History",
+          "Complete Admin Dashboard: CRUD Flowers, Vouchers, Orders, and Profile"
+        ]
+      },
       tech: [
         { name: "React v19", icon: FaReact },
         { name: "Vite", icon: FaCode },
@@ -443,12 +459,20 @@ export const projectsData = {
         id: "Merancang dan membangun RESTful Web API terintegrasi untuk pengelolaan operasional klinik gigi, mencakup data pasien, rekam medis, dokter, jadwal, antrean, transaksi treatment, serta laporan klinik.\n\nDilengkapi skema database Microsoft SQL Server yang dinormalisasi dan pengujian komprehensif seluruh endpoint dengan Postman.",
         en: "Engineered an integrated RESTful Web API for dental clinic operations, including patient management, medical records, doctors, schedules, queues, treatment transactions, and clinic reports.\n\nBuilt on normalized Microsoft SQL Server database schema with end-to-end endpoint testing via Postman."
       },
-      highlights: [
-        "Arsitektur RESTful Web API berbasis C# dan ASP.NET .NET Framework",
-        "Pengelolaan Rekam Medis, Pasien, Dokter, Antrean, dan Treatment",
-        "Integrasi Relasional Database MS SQL Server & Stored Procedures",
-        "Pengujian komprehensif seluruh endpoint & respon JSON dengan Postman"
-      ],
+      highlights: {
+        id: [
+          "Arsitektur RESTful Web API berbasis C# dan ASP.NET .NET Framework",
+          "Pengelolaan Rekam Medis, Pasien, Dokter, Antrean, dan Treatment",
+          "Integrasi Relasional Database MS SQL Server & Stored Procedures",
+          "Pengujian komprehensif seluruh endpoint & respon JSON dengan Postman"
+        ],
+        en: [
+          "RESTful Web API architecture powered by C# and ASP.NET .NET Framework",
+          "Comprehensive management of Medical Records, Patients, Doctors, Queues, and Treatments",
+          "Relational MS SQL Server Database integration with normalized schemas",
+          "End-to-end API testing across all endpoints & JSON responses via Postman"
+        ]
+      },
       tech: [
         { name: "C#", icon: TbBrandCSharp },
         { name: "ASP.NET Web API", icon: SiDotnet },
@@ -487,12 +511,20 @@ export const projectsData = {
         id: "Aplikasi desktop otomasi operasional jasa laundry untuk mempercepat pencatatan transaksi harian, kalkulasi biaya cuci/setrika otomatis berdasarkan bobot dan paket layanan, serta pemantauan status proses cucian real-time.\n\nDilengkapi dua peran pengguna utama yaitu Admin (Manajemen master data) dan Kasir (Penerimaan cucian & pembayaran).",
         en: "Desktop application automating laundry business operations to accelerate daily transaction recording, automatic cost calculation based on weight/package, and real-time status monitoring.\n\nFeatures dual roles: Admin (Master Data Management) and Cashier (Laundry Order Acceptance & Payment)."
       },
-      highlights: [
-        "Aplikasi Desktop berbasis C# .NET Framework WinForms",
-        "Kalkulasi harga otomatis berdasarkan tipe paket & berat laundry",
-        "Multi-role user: Dashboard Admin & Interface Kasir",
-        "Pengelolaan Database MySQL / SQL Server terstruktur"
-      ],
+      highlights: {
+        id: [
+          "Aplikasi Desktop berbasis C# .NET Framework WinForms",
+          "Kalkulasi harga otomatis berdasarkan tipe paket & berat laundry",
+          "Multi-role user: Dashboard Admin & Interface Kasir",
+          "Pengelolaan Database MySQL / SQL Server terstruktur"
+        ],
+        en: [
+          "Desktop GUI Application built with C# .NET Framework WinForms",
+          "Automated pricing calculations based on package type & laundry weight",
+          "Multi-role user architecture: Admin Dashboard & Cashier POS Interface",
+          "Structured relational database management with MySQL / SQL Server"
+        ]
+      },
       tech: [
         { name: "C#", icon: TbBrandCSharp },
         { name: ".NET Framework", icon: SiDotnet },
@@ -528,12 +560,20 @@ export const projectsData = {
         id: "Website e-commerce katalog dan penjualan produk kecantikan/make-up berbasis HTML5, CSS3, dan Vanila JavaScript. Dirancang dengan antarmuka yang responsif, estetis, serta memiliki tata letak yang ramah pengguna.\n\nDilengkapi fitur logika keranjang belanja lokal, detail produk, tentang toko, serta halaman autentikasi user.",
         en: "Responsive E-commerce website for cosmetics and make-up products built with HTML5, CSS3, and Vanilla JavaScript. Features dynamic shopping cart logic, product detail views, shop info, and authentication pages."
       },
-      highlights: [
-        "Antarmuka web interaktif & responsif (Mobile & Desktop)",
-        "Logika keranjang belanja (Add to Cart & Total calculation)",
-        "Tampilan produk beauty & cosmetics berestetika tinggi",
-        "Form Login, Register, dan Informasi Toko"
-      ],
+      highlights: {
+        id: [
+          "Antarmuka web interaktif & responsif (Mobile & Desktop)",
+          "Logika keranjang belanja (Add to Cart & Total calculation)",
+          "Tampilan produk beauty & cosmetics berestetika tinggi",
+          "Form Login, Register, dan Informasi Toko"
+        ],
+        en: [
+          "Interactive & responsive web interface across Mobile and Desktop screens",
+          "Client-side shopping cart logic (Add to Cart & automated total sum)",
+          "Aesthetically crafted product showcases for beauty and cosmetics",
+          "User login, registration forms, and store information pages"
+        ]
+      },
       tech: [
         { name: "HTML5", icon: FaHtml5 },
         { name: "CSS3", icon: FaCss3Alt },
@@ -561,12 +601,20 @@ export const projectsData = {
         id: "Proyek akhir Pelatihan Logika & Algoritma Pemrograman C untuk mengelola antrean pasien dan data layanan klinik gigi.\n\nMenerapkan struktur data C seperti Struct, Array of Struct, Pointer, dan Modular Functions untuk simulasi operasional antrean klinik yang efisien.",
         en: "Final capstone project for C Logic & Algorithms Training. Manages patient queue systems and dental service records using C Structs, Array of Structs, Pointers, and Modular Functions."
       },
-      highlights: [
-        "Algoritma Pemrograman Bahasa C murni & Manajemen Memori",
-        "Struktur Data Struct, Array, Pointer, dan Operasi I/O File",
-        "Simulasi Antrean Pasien & Rekapitulasi Biaya Layanan Klinik",
-        "Proyek Akhir Sertifikasi Logika & Algoritma PUB"
-      ],
+      highlights: {
+        id: [
+          "Algoritma Pemrograman Bahasa C murni & Manajemen Memori",
+          "Struktur Data Struct, Array, Pointer, dan Operasi I/O File",
+          "Simulasi Antrean Pasien & Rekapitulasi Biaya Layanan Klinik",
+          "Proyek Akhir Sertifikasi Logika & Algoritma PUB"
+        ],
+        en: [
+          "Pure C language algorithms and memory pointer management",
+          "Data structures including Structs, Arrays, Pointers, and File I/O operations",
+          "Simulation of patient queuing & clinic fee summary reports",
+          "PUB Capstone Project for Logic & Algorithms Certification"
+        ]
+      },
       tech: [
         { name: "Bahasa C", icon: FaC },
         { name: "Algoritma & Struktur Data", icon: FaDatabase },
@@ -582,14 +630,14 @@ export const projectsData = {
 };
 
 export const socialIcons = {
-    github: FaGithub,
-    linkedin: FaLinkedin,
-    email: MdEmail,
+  github: FaGithub,
+  linkedin: FaLinkedin,
+  email: MdEmail,
 };
 
 export const contactIcons = {
-    email: MdEmail,
-    location: MdLocationOn,
+  email: MdEmail,
+  location: MdLocationOn,
 };
 
 export { FaDatabase };
