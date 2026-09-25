@@ -27,14 +27,14 @@ import { MdEmail, MdLocationOn } from "react-icons/md";
 import { FaC } from "react-icons/fa6";
 
 // Certificate Images
-import certC from "../assets/Sertificate/C_sertificate_Aprilliyanti.png";
-import certCSharp from "../assets/Sertificate/CSharp_Fundamental_sertificate_Aprilliyanti.png";
-import certCSharpLanjutan from "../assets/Sertificate/CSharp_Lanjutan_sertificate_Aprilliyanti.png";
-import certDS from "../assets/Sertificate/Data_Structure_sertificate_Aprilliyanti.png";
-import certDb from "../assets/Sertificate/Database_sertificate_Aprilliyanti.png";
-import certGithub from "../assets/Sertificate/GitHub_sertificate_Aprilliyanti.png";
-import certWeb from "../assets/Sertificate/WEB_Sertificate_Aprilliyanti.png";
-import certReact from "../assets/Sertificate/React_Sertificate_Aprilliyanti.png";
+import certC from "../assets/Sertificate/C_sertificate_Aprilliyanti.jpeg";
+import certCSharp from "../assets/Sertificate/CSharp_Fundamental_sertificate_Aprilliyanti.jpeg";
+import certCSharpLanjutan from "../assets/Sertificate/CSharp_Lanjutan_sertificate_Aprilliyanti.jpeg";
+import certDS from "../assets/Sertificate/Data_Structure_sertificate_Aprilliyanti.jpeg";
+import certDb from "../assets/Sertificate/Database_sertificate_Aprilliyanti.jpeg";
+import certGithub from "../assets/Sertificate/GitHub_sertificate_Aprilliyanti.jpeg";
+import certWeb from "../assets/Sertificate/WEB_Sertificate_Aprilliyanti.jpeg";
+import certReact from "../assets/Sertificate/React_Sertificate_Aprilliyanti.jpeg";
 
 // Project Covers & Screenshots
 // 1. Bloom & Bouquet (React)
